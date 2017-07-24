@@ -13,6 +13,10 @@ body {
   position:relative;
 }
 
+/*img{
+  width: 100%;
+}*/
+
 div.scrollmenu a {
     display: inline-block;
     color: white;
