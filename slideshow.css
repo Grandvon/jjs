@@ -4,10 +4,11 @@
 
 .w3-display-container{
   position:relative
+
 }
 
 .w3-button{
-  border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap
+  border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:grey;text-align:center;cursor:pointer;white-space:nowrap
 }
 
 .w3-display-left{
@@ -20,6 +21,13 @@
 
 .w3-black {
   color: red;
+}
+
+img{
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  height: 500px;
 }
 
 
