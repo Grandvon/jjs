@@ -73,7 +73,13 @@ class GameHandler(webapp2.RequestHandler):
     main_template = env.get_template('mainpage.html')
     self.response.out.write(main_template.render())
 
+class HistoryHandler(webapp2.RequestHandler):
+  def get(self):
+      main_template = env.get_template('history.html')
+      self.response.out.write(main_template.render())
+
 app = webapp2.WSGIApplication([
   ('/userlogin', MainHandler),
-  ('/', GameHandler)
+  ('/', GameHandler),
+  ('/history-of-gaming', HistoryHandler)
 ], debug=True)
