@@ -45,8 +45,8 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write('''<div class = edits>
             Welcome to our site, %s!  Please sign up! <br>
             <form method="post" action="/">
-            <input type="text" name="first_name">
-            <input type="text" name="last_name">
+            First Name: <input type="text" name="first_name">
+            Last Name: <input type="text" name="last_name">
             <input type="submit">
             </form><br> %s <br> </div>
             ''' % (email_address, signout_link_html))
@@ -74,6 +74,7 @@ class MainHandler(webapp2.RequestHandler):
     cssi_user.put()
     self.response.write('Thanks for signing up, %s!' %
         cssi_user.first_name)
+
 
     "</div>"
 
