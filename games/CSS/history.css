@@ -19,10 +19,10 @@ h3{
 }
 
 img {
-  background-color: white;
+  background: linear-gradient(#e0ccff, #ff99ff);
   padding: 34px;
   width: 80%;
-  height: 200px;
+  height: 230px;
 }
 
 
