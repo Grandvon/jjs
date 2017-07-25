@@ -102,5 +102,5 @@ app = webapp2.WSGIApplication([
   ('/homepage', GameHandler),
   ('/gaming-reviews', ReviewHandler),
   ('/history-of-gaming', HistoryHandler),
-  ('/console-battle-arena', BattleHandler)
+  ('/console-battle-arena', BattleHandler),
 ], debug=True)
