@@ -75,13 +75,9 @@ class MainHandler(webapp2.RequestHandler):
     self.response.write('Thanks for signing up, %s!' %
         cssi_user.first_name)
 
-<<<<<<< HEAD
-
     "</div>"
 
 
-=======
->>>>>>> a71f388a7099018e8e45d78066b0b46ed79bbaed
 class GameHandler(webapp2.RequestHandler):
   def get(self):
     main_template = env.get_template('mainpage.html')

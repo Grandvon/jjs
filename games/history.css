@@ -11,6 +11,7 @@ body {
 .pics {
   display: inline-block;
   position:relative;
+  #background-color: white;
 }
 
 div.scrollmenu a {
