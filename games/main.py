@@ -82,6 +82,11 @@ class GameHandler(webapp2.RequestHandler):
     main_template = env.get_template('mainpage.html')
     self.response.out.write(main_template.render())
 
+class ReviewHandler(webapp2.RequestHandler):
+  def get(self):
+    main_template = env.get_template('gamepages.html')
+    self.response.out.write(main_template.render())
+
 class HistoryHandler(webapp2.RequestHandler):
   def get(self):
       main_template = env.get_template('history.html')
@@ -95,6 +100,7 @@ class BattleHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
   ('/', MainHandler),
   ('/homepage', GameHandler),
+  ('/gaming-reviews', ReviewHandler),
   ('/history-of-gaming', HistoryHandler),
   ('/console-battle-arena', BattleHandler)
 ], debug=True)
