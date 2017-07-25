@@ -74,7 +74,6 @@ class MainHandler(webapp2.RequestHandler):
     cssi_user.put()
     self.response.write('Thanks for signing up, %s!' %
         cssi_user.first_name)
-
     "</div>"
 
 
@@ -94,8 +93,8 @@ class BattleHandler(webapp2.RequestHandler):
       self.response.out.write(main_template.render())
 
 app = webapp2.WSGIApplication([
-  ('/userlogin', MainHandler),
-  ('/', GameHandler),
+  ('/', MainHandler),
+  ('/homepage', GameHandler),
   ('/history-of-gaming', HistoryHandler),
   ('/console-battle-arena', BattleHandler)
 ], debug=True)
