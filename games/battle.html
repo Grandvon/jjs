@@ -1,6 +1,8 @@
 <html>
 <title>Console Battle Arena</title>
 <link rel="stylesheet" href="CSS/battle.css">
+<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+
 
 <body>
 
@@ -22,6 +24,9 @@
 <span class = 'bold'> VS. </span>
 
 <img src='https://www.euro.com.pl/si_upload/gfx/karty/microsoft/tombraider/assets/black-console_2.png?1445964050'>
+
+<br>
+<br>
 
     <script>
 function getVote(int) {
@@ -52,4 +57,43 @@ PS4:
 <input type="radio" name="vote" value="1" onclick="getVote(this.value)">
 </form>
 </div>
+
+<br>
+<br>
+
+<img src='http://www.pngall.com/wp-content/uploads/2016/04/Computer-PC-High-Quality-PNG.png'>
+
+<span class = 'bold'> VS. </span>
+
+<img src='https://images.vexels.com/media/users/3/127673/isolated/preview/c080708d04b61442471fc503e6f07f99-flat-gaming-controller-icon-by-vexels.png'>
+
+<script>
+function getVote(int) {
+if (window.XMLHttpRequest) {
+// code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp=new XMLHttpRequest();
+} else {  // code for IE6, IE5
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange=function() {
+if (this.readyState==4 && this.status==200) {
+  document.getElementById("poll").innerHTML=this.responseText;
+}
+}
+xmlhttp.open("GET","poll_vote.php?vote="+int,true);
+xmlhttp.send();
+}
+</script>
+
+<div id="poll">
+<h3>PC or Console?</h3>
+<form>
+PC:
+<input type="radio" name="vote" value="0" onclick="getVote(this.value)">
+<br>Console:
+<input type="radio" name="vote" value="1" onclick="getVote(this.value)">
+</form>
+</div>
+
+
 </html>
