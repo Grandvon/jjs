@@ -9,8 +9,15 @@ body {
 }
 
 .pics {
-  display: inline-block;
+  /*display: inline-block;*/
   position:relative;
+
+}
+
+img {
+  border: 5px solid red;
+  background-color: white;
+
 }
 
 div.scrollmenu a {
