@@ -72,9 +72,9 @@ class MainHandler(webapp2.RequestHandler):
         last_name=self.request.get('last_name'),
         id=user.user_id())
     cssi_user.put()
-    self.response.write('Thanks for signing up, %s!' %
+    self.response.write('<div class = edits> Thanks for signing up, %s!</div>' %
         cssi_user.first_name)
-    "</div>"
+
 
 
 class GameHandler(webapp2.RequestHandler):
