@@ -68,6 +68,7 @@ class MainHandler(webapp2.RequestHandler):
     self.response.write('Thanks for signing up, %s!' %
         cssi_user.first_name)
 
+
 class GameHandler(webapp2.RequestHandler):
   def get(self):
     main_template = env.get_template('mainpage.html')
@@ -78,8 +79,14 @@ class HistoryHandler(webapp2.RequestHandler):
       main_template = env.get_template('history.html')
       self.response.out.write(main_template.render())
 
+class BattleHandler(webapp2.RequestHandler):
+  def get(self):
+      main_template = env.get_template('battle.html')
+      self.response.out.write(main_template.render())
+
 app = webapp2.WSGIApplication([
   ('/userlogin', MainHandler),
   ('/', GameHandler),
-  ('/history-of-gaming', HistoryHandler)
+  ('/history-of-gaming', HistoryHandler),
+  ('/console-battle-arena', BattleHandler)
 ], debug=True)
