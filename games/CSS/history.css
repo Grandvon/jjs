@@ -4,6 +4,11 @@ div.scrollmenu {
     white-space: nowrap;
 }
 
+h1 {
+  font-family: 'Alegreya Sans', sans-serif;
+font-family: 'Press Start 2P', cursive;
+}
+
 body {
   text-align: center;
 }
