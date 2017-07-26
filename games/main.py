@@ -97,7 +97,6 @@ class BattleHandler(webapp2.RequestHandler):
       main_template = env.get_template('battle.html')
       self.response.out.write(main_template.render())
 
-<<<<<<< HEAD
 class GameData(ndb.Model):
     stars = ndb.StringProperty()
 
@@ -122,12 +121,12 @@ class DriftingHandler(webapp2.RequestHandler):
                                         'stars': key.get().stars,
                                         'synopsis': "lorem ipsum..."}))
 
-=======
+
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         main_template = env.get_template('profile.html')
         self.response.out.write(main_template.render())
->>>>>>> f45763e1feb3d57bad9d197da6f5d26a9f4f0190
+
 
 
 app = webapp2.WSGIApplication([
@@ -136,7 +135,7 @@ app = webapp2.WSGIApplication([
   ('/gaming-reviews', ReviewHandler),
   ('/history-of-gaming', HistoryHandler),
   ('/console-battle-arena', BattleHandler),
-<<<<<<< HEAD
+  ('/profile', ProfileHandler),
   ('/tekken', Tekken7Handler),
   ('/drifting-lands', DriftingHandler),
   ('/tekken', Tekken7Handler),
@@ -159,7 +158,4 @@ app = webapp2.WSGIApplication([
   ('/tekken', Tekken7Handler),
   ('/tekken', Tekken7Handler),
 
-=======
-  ('/profile', ProfileHandler)
->>>>>>> f45763e1feb3d57bad9d197da6f5d26a9f4f0190
 ], debug=True)
