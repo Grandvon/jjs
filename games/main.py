@@ -3,6 +3,7 @@ import webapp2
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
+
 import jinja2
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader(''))
@@ -99,6 +100,9 @@ class BattleHandler(webapp2.RequestHandler):
 
 class GameData(ndb.Model):
     stars = ndb.StringProperty()
+    review = ndb.StringProperty()
+
+
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
@@ -120,22 +124,41 @@ class Tekken7Handler(webapp2.RequestHandler):
     def get(self):
         game = GameData(stars = '4.75')
         key = game.put()
+
+        one = GameData(review=self.request.get('review'))
+        one.put()
+
+        query = GameData.query()
+        query = query.order(GameData.review)
+        results = query.fetch()
+
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Tekken 7',
                                         'pic' : 'https://i.ytimg.com/vi/7NyPT_o5aOs/maxresdefault.jpg',
                                         'stars': key.get().stars,
-                                        'synopsis': "lorem ipsum..."}))
+                                        'synopsis': "lorem ipsum...",
+                                        'review': results}))
+
 
 
 class DriftingHandler(webapp2.RequestHandler):
     def get(self):
         game = GameData(stars = '3')
         key = game.put()
+
+        one = GameData(review=self.request.get('review'))
+        one.put()
+
+        query = GameData.query()
+        query = query.order(GameData.review)
+        results = query.fetch()
+
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Drifting Lands',
                                         'pic' : 'https://steamdb.info/static/camo/apps/327240/header.jpg',
                                         'stars': key.get().stars,
-                                        'synopsis': "lorem ipsum..."}))
+                                        'synopsis': "lorem ipsum...",
+                                        'review': results}))
 
 class Dirt4Handler(webapp2.RequestHandler):
     def get(self):
