@@ -99,8 +99,16 @@ class BattleHandler(webapp2.RequestHandler):
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
+        cssi_user = CssiUser.get_by_id(user.user_id())
+        email_address = user.nickname()
+        var_user = {"first_name" : cssi_user.first_name,
+        "last_name": cssi_user.last_name, "email_address" : email_address}
+
         main_template = env.get_template('profile.html')
-        self.response.out.write(main_template.render())
+        self.response.out.write(main_template.render(var_user))
+
+
 
 
 app = webapp2.WSGIApplication([
