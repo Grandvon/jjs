@@ -99,7 +99,6 @@ class BattleHandler(webapp2.RequestHandler):
 
 class GameData(ndb.Model):
     stars = ndb.StringProperty()
-
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         main_template = env.get_template('profile.html')
