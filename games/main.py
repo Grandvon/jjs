@@ -97,10 +97,58 @@ class BattleHandler(webapp2.RequestHandler):
       main_template = env.get_template('battle.html')
       self.response.out.write(main_template.render())
 
+class GameData(ndb.Model):
+    stars = ndb.StringProperty()
+
+class Tekken7Handler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '4.75')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Tekken 7',
+                                        'pic' : 'https://i.ytimg.com/vi/7NyPT_o5aOs/maxresdefault.jpg',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+
+class DriftingHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '3')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Drifting Lands',
+                                        'pic' : 'https://steamdb.info/static/camo/apps/327240/header.jpg',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+
+
 app = webapp2.WSGIApplication([
   ('/', MainHandler),
   ('/homepage', GameHandler),
   ('/gaming-reviews', ReviewHandler),
   ('/history-of-gaming', HistoryHandler),
   ('/console-battle-arena', BattleHandler),
+  ('/tekken', Tekken7Handler),
+  ('/drifting-lands', DriftingHandler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+  ('/tekken', Tekken7Handler),
+
 ], debug=True)
