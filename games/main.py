@@ -100,6 +100,11 @@ class BattleHandler(webapp2.RequestHandler):
 class GameData(ndb.Model):
     stars = ndb.StringProperty()
 
+class ProfileHandler(webapp2.RequestHandler):
+    def get(self):
+        main_template = env.get_template('profile.html')
+        self.response.out.write(main_template.render())
+
 class Tekken7Handler(webapp2.RequestHandler):
     def get(self):
         game = GameData(stars = '4.75')
@@ -122,10 +127,6 @@ class DriftingHandler(webapp2.RequestHandler):
                                         'synopsis': "lorem ipsum..."}))
 
 
-class ProfileHandler(webapp2.RequestHandler):
-    def get(self):
-        main_template = env.get_template('profile.html')
-        self.response.out.write(main_template.render())
 
 
 
