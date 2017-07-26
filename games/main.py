@@ -126,6 +126,175 @@ class DriftingHandler(webapp2.RequestHandler):
                                         'stars': key.get().stars,
                                         'synopsis': "lorem ipsum..."}))
 
+class Dirt4Handler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Dirt 4',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class ESHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'ESO: Morrowwind',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class UnderPressureHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'GOTG Eps 2:Under Pressure',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class TownOfLightHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'The Town of Light',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class WipeoutHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Wipeout Omega Collection',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class WonderBoyHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Wonder Boy',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class ArmsHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Arms',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+
+class DeadByDayLightHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Dead by Daylight',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class StormbloodHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Stormblood',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class NexMachinaHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Nex Machina',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class GetEvenHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Get Even',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class DanganronpaHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Danganronpa: Ultra Despair Girls',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class EliteHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Elite: Dangerous',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class GolfClub2Handler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'The Golf Club 2',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class ValkyriaHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Valkyria Revolution',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+class CBNSHandler(webapp2.RequestHandler):
+    def get(self):
+        game = GameData(stars = '')
+        key = game.put()
+        main_template = env.get_template('reviewtemplate.html')
+        self.response.out.write(main_template.render({'name': 'Crash Bandicoot N. Sane Trilogy',
+                                        'pic' : '',
+                                        'stars': key.get().stars,
+                                        'synopsis': "lorem ipsum..."}))
+
+
+
+
+
+
+
+
+
 
 
 
@@ -139,22 +308,22 @@ app = webapp2.WSGIApplication([
   ('/profile', ProfileHandler),
   ('/tekken', Tekken7Handler),
   ('/drifting-lands', DriftingHandler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
-  ('/tekken', Tekken7Handler),
+  ('/dirt-4', Dirt4Handler),
+  ('/elder-scrolls', ESHandler),
+  ('/under-pressure', UnderPressureHandler),
+  ('/town-of-light', TownOfLightHandler),
+  ('/wipeout', WipeoutHandler),
+  ('/wonder-boy', WonderBoyHandler),
+  ('/arms', ArmsHandler),
+  ('/dead-by-daylight', DeadByDayLightHandler),
+  ('/stormblood', StormbloodHandler),
+  ('/nex-machina', NexMachinaHandler),
+  ('/get-even', GetEvenHandler),
+  ('/danganronpa', DanganronpaHandler),
+  ('/elite', EliteHandler),
+  ('/the-golf-club-2', GolfClub2Handler),
+  ('/valkyria-revolution', ValkyriaHandler),
+  ('/cbns-trilogy', CBNSHandler),
   ('/tekken', Tekken7Handler),
   ('/tekken', Tekken7Handler),
   ('/tekken', Tekken7Handler),
