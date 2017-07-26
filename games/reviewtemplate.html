@@ -23,16 +23,21 @@
     <img src = {{ pic }} style="width:25%">
     <p> Synopsis: {{ synopsis }} </p>
     <h2 class = stars> {{ stars }}/5 Stars </h2>
-    <!--<form action = "/tekken" method = "get">
-      Rate this game: <input type = "text" name = 'star'>
-      <input type = "submit" value = "enter">
-    </form>-->
+
     <h3> Leave a review: </h3>
 
+    <form action = "/tekken" method = "get">
+      Enter a Review <input type = "text" name = "review">
+      <input type = "submit" value = "Next Page">
+    </form>
 
-
-
-
+        <ul>Reviews:
+          {% for para in review %}
+          <li>
+            {{ para.review }}
+          </li>
+          {% endfor %}
+        </ul>
 
   </body>
 </html>
