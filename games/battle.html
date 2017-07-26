@@ -99,5 +99,42 @@ PC:
 </form>
 </div>
 
+<img src='https://www.thegamestation.online/wp-content/uploads/2017/02/Switch-Controller.png'>
+
+<span class = 'bold'> VS. </span>
+
+<img src='https://cdn0.iconfinder.com/data/icons/virtual-reality-6/100/14-512.png'>
+
+<script>
+function getVote(int) {
+if (window.XMLHttpRequest) {
+// code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp=new XMLHttpRequest();
+} else {  // code for IE6, IE5
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange=function() {
+if (this.readyState==4 && this.status==200) {
+  document.getElementById("poll").innerHTML=this.responseText;
+}
+}
+xmlhttp.open("GET","poll_vote.php?vote="+int,true);
+xmlhttp.send();
+}
+</script>
+</head>
+<body>
+
+<div id="poll">
+<h3>Nintendo Switch or Virtual Reality?</h3>
+<form>
+Nintendo Switch:
+<input type="radio" name="vote" value="0" onclick="getVote(this.value)">
+<br>Virtual Reality:
+<input type="radio" name="vote" value="1" onclick="getVote(this.value)">
+</form>
+</div>
+
+
 
 </html>
