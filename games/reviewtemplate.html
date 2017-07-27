@@ -21,40 +21,41 @@
 
     <h1> {{ name }} </h1>
     <img src = {{ pic }} style="width:25%">
-    <p> Synopsis: {{ synopsis }} </p>
-    <h2 class = stars> {{ stars }}/5 Stars </h2>
+    <p> The average rating of this game is {{ rating }} / 5 stars<br>Synopsis: {{ synopsis }} </p>
 
 
-  <fieldset class="rating">
+  <!--<fieldset class="rating">
     <legend>Please rate:</legend>
+  <form action="/{{ game }}" method="get">
     <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
     <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
     <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
     <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
-    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
-</fieldset>
-
-    <!--<form action = "/tekken" method = "get">
-      Rate this game: <input type = "text" name = 'star'>
-      <input type = "submit" value = "enter">
-    </form>-->
-    <h3> Leave a review: </h3>
-
+    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label><br>
+    <input type="submit" value="Submit">
+  </form>
+</fieldset>-->
 
 
 
     <h3> Leave a review: </h3>
 
-    <form action = "/tekken" method = "get">
+    <form action = '/{{ game }}' method = "get">
+      Give this game a number rating between one and five: <input id = star type = "text" name = "stars"><br>
       Enter a Review <input type = "text" name = "review">
-      <input type = "submit" value = "Next Page">
+      <input id = click type = "submit" value = "Click"> twice to submit.
     </form>
-
-        <ul>Reviews:
-          {% for para in review %}
+    <p>{{ alert }}</p>
+    <h2>Reviews:</h2>
+        <ul>
+          {% for para in review: %}
+            {% if para.review %}
           <li>
-            {{ para.review }}
+              {{ para.user_name }} gives this game {{ para.stars }} Stars and says:<br>
+              {{ para.review }}
+              <br><br>
           </li>
+            {% endif %}
           {% endfor %}
         </ul>
 
