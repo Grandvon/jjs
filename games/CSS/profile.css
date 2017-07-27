@@ -1,0 +1,74 @@
+.card {
+    align-content: center;
+    box-shadow: 0 4px 8px 0;
+    max-width: 750px;
+    max-height: 750px
+    margin: auto;
+    text-align: center;
+    background-color: white;
+    display: block;
+    margin: auto;
+    width: 40%;
+}
+
+.container {
+    padding: 0 16px;
+}
+
+.title {
+    color: black;
+    font-size: 18px;
+}
+
+button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+img {
+  width: 100px
+}
+
+a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+button:hover, a:hover {
+    opacity: 0.7;
+}
+
+div.scrollmenu {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    background-color: #777;
+}
+
+    body {
+     text-align: center;
+     background-image: url("http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/Purple-wallpaper-8.jpg");
+     background-repeat: no-repeat;
+     background-position: 100%;
+     background-attachment: fixed;
+    }
