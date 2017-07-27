@@ -39,7 +39,7 @@ img {
 
 a {
     text-decoration: none;
-    font-size: 22px;
+    /*font-size: 22px;*/
     color: black;
 }
 
@@ -65,10 +65,10 @@ div.scrollmenu a:hover {
     background-color: #777;
 }
 
-    body {
-     text-align: center;
-     background-image: url("http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/Purple-wallpaper-8.jpg");
-     background-repeat: no-repeat;
-     background-position: 100%;
-     background-attachment: fixed;
-    }
+body {
+    text-align: center;
+    background-image: url("http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/Purple-wallpaper-8.jpg");
+    background-repeat: no-repeat;
+    background-position: 100%;
+    background-attachment: fixed;
+}
