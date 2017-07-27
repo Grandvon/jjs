@@ -63,4 +63,16 @@ HTML
     top:2px;
     left:2px;
 }
->>>>>>> f52d838cf5dd59535fe47cbb1bb3f924e13c0453
+
+ul{
+  list-style-type: none;
+  font-size: 25px;
+  text-align: left;
+}
+
+li{
+  border: white solid 5px;
+  margin-left: 20px;
+  margin-right: 60px;
+  margin-bottom: 10px;
+}

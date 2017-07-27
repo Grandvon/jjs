@@ -125,19 +125,29 @@ class Tekken7Handler(webapp2.RequestHandler):
         game = GameData(stars = '4.75')
         key = game.put()
 
+
         one = GameData(review=self.request.get('review'))
-        one.put()
+        if not one:
+            x=0
+        else:
+            if len(str(one.review)) > 0:
+                one.put()
+
 
         query = GameData.query()
         query = query.order(GameData.review)
         results = query.fetch()
+
+        user = users.get_current_user()
+        cssi_user = CssiUser.get_by_id(user.user_id())
 
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Tekken 7',
                                         'pic' : 'https://i.ytimg.com/vi/7NyPT_o5aOs/maxresdefault.jpg',
                                         'stars': key.get().stars,
                                         'synopsis': "lorem ipsum...",
-                                        'review': results}))
+                                        'review': results,
+                                        'user' : cssi_user.first_name + " " + cssi_user.last_name }))
 
 
 
@@ -147,18 +157,26 @@ class DriftingHandler(webapp2.RequestHandler):
         key = game.put()
 
         one = GameData(review=self.request.get('review'))
-        one.put()
+        if not one:
+            x=0
+        else:
+            if len(str(one.review)) > 0:
+                one.put()
+
 
         query = GameData.query()
         query = query.order(GameData.review)
         results = query.fetch()
+
+        user = users.get_current_user()
 
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Drifting Lands',
                                         'pic' : 'https://steamdb.info/static/camo/apps/327240/header.jpg',
                                         'stars': key.get().stars,
                                         'synopsis': "lorem ipsum...",
-                                        'review': results}))
+                                        'review': results,
+                                        'user' : first_name}))
 
 class Dirt4Handler(webapp2.RequestHandler):
     def get(self):

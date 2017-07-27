@@ -34,25 +34,25 @@
     <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
 </fieldset>
 
-    <!--<form action = "/tekken" method = "get">
-      Rate this game: <input type = "text" name = 'star'>
-      <input type = "submit" value = "enter">
-    </form>-->
-
 
 
     <h3> Leave a review: </h3>
 
     <form action = "/tekken" method = "get">
       Enter a Review <input type = "text" name = "review">
-      <input type = "submit" value = "Next Page">
+      <input type = "submit" value = "Click"> to submit or press the enter key, then refresh your page once.
     </form>
 
-        <ul>Reviews:
-          {% for para in review %}
+    <h2>Reviews:</h2>
+        <ul>
+          {% for para in review: %}
+            {% if para.review %}
           <li>
-            {{ para.review }}
+              {{ user }} says:
+              {{ para.review }} 
+              <br><br>
           </li>
+            {% endif %}
           {% endfor %}
         </ul>
 
