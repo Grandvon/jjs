@@ -98,7 +98,10 @@ class BattleHandler(webapp2.RequestHandler):
       main_template = env.get_template('battle.html')
       self.response.out.write(main_template.render())
 
+
+
 class GameData(ndb.Model):
+
     review = ndb.StringProperty()
     user_name = ndb.StringProperty()
     game = ndb.StringProperty()
@@ -117,12 +120,14 @@ class ProfileHandler(webapp2.RequestHandler):
 
 
 
+
+
 class Tekken7Handler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-
         one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = 'tekken')
+
         if not one:
             x=0
         else:
@@ -283,9 +288,11 @@ class WonderBoyHandler(webapp2.RequestHandler):
         key = game.put()
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Wonder Boy',
+
                                         'pic' : '',
                                         'stars': key.get().stars,
                                         'synopsis': "lorem ipsum..."}))
+
 
 class ArmsHandler(webapp2.RequestHandler):
     def get(self):
