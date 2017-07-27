@@ -4,6 +4,7 @@ body {
  background-repeat: no-repeat;
  background-position: 100%;
  background-attachment: fixed;
+ font-family: 'Alegreya Sans SC', sans-serif;
 }
 
 div.scrollmenu {
@@ -36,6 +37,30 @@ img {
 }
 
 h1 {
-  font-family: 'Alegreya Sans', sans-serif;
   font-size: 45px;
+}
+
+img {
+  background: linear-gradient(#e0ccff, #ff99ff);
+  padding: 34px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+form {
+  font-size: 25px;
+}
+
+button {
+    border: none;
+    outline: 0;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
 }

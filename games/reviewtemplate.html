@@ -21,7 +21,7 @@
 
     <h1> {{ name }} </h1>
     <img src = {{ pic }} style="width:25%">
-    <p> Synopsis: {{ synopsis }} </p>
+    <p> The average rating of this game is {{ rating }} / 5 stars<br>Synopsis: {{ synopsis }} </p>
 
 
   <!--<fieldset class="rating">
@@ -45,7 +45,7 @@
       Enter a Review <input type = "text" name = "review">
       <input id = click type = "submit" value = "Click"> twice to submit.
     </form>
-
+    <p>{{ alert }}</p>
     <h2>Reviews:</h2>
         <ul>
           {% for para in review: %}

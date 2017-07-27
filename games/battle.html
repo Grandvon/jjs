@@ -1,8 +1,9 @@
 <html>
 <title>Console Battle Arena</title>
 <link rel="stylesheet" href="CSS/battle.css">
-<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
-
+<style>
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC');
+</style>
 
 <body>
 
@@ -17,125 +18,91 @@
     ...
     </div>
 
+
     <h1> Console Battle Arena </h1>
 
 <br>
 
+<FORM METHOD="post" ACTION="/pollresults">
+
 <img src='http://vignette1.wikia.nocookie.net/criminal-case-grimsborough/images/b/bd/PS4.png/revision/latest?cb=20141224124624'>
 
-<span class = 'bold'> VS. </span>
+<span class = 'bold'>  &nbsp; &nbsp;    VS.  &nbsp; &nbsp;    </span>
+
 
 <img src='https://www.euro.com.pl/si_upload/gfx/karty/microsoft/tombraider/assets/black-console_2.png?1445964050'>
 
 <br>
 <br>
 
-    <script>
-function getVote(int) {
-  if (window.XMLHttpRequest) {
-    // code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp=new XMLHttpRequest();
-  } else {  // code for IE6, IE5
-    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  xmlhttp.onreadystatechange=function() {
-    if (this.readyState==4 && this.status==200) {
-      document.getElementById("poll").innerHTML=this.responseText;
-    }
-  }
-  xmlhttp.open("GET","poll_vote.php?vote="+int,true);
-  xmlhttp.send();
-}
-</script>
-</head>
-<body>
 
-<div id="poll">
-<h3>PS4 or Xbox One?</h3>
-<form>
-PS4:
-<input type="radio" name="vote" value="0" onclick="getVote(this.value)">
-<br>Xbox One:
-<input type="radio" name="vote" value="1" onclick="getVote(this.value)">
-</form>
-</div>
+
+
+<B>PS4 or Xbox One?</B><P>
+
+<INPUT TYPE="radio" NAME="ps4" value="1">PS4<BR>
+
+<INPUT TYPE="radio" NAME="xbox" value="2">Xbox One<BR>
+
+
+
+
 
 <br>
 <br>
 
 <img src='http://www.pngall.com/wp-content/uploads/2016/04/Computer-PC-High-Quality-PNG.png'>
 
-<span class = 'bold'> VS. </span>
+<span class = 'bold'>  &nbsp; &nbsp;    VS.  &nbsp; &nbsp;    </span>
+
 
 <img src='http://oopsilon.com/content/wp-content/uploads/2014/08/consoles.png'>
 
 <br>
+<br>
 
-<script>
 
-function getVote(int) {
-if (window.XMLHttpRequest) {
-// code for IE7+, Firefox, Chrome, Opera, Safari
-xmlhttp=new XMLHttpRequest();
-} else {  // code for IE6, IE5
-xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-}
-xmlhttp.onreadystatechange=function() {
-if (this.readyState==4 && this.status==200) {
-  document.getElementById("poll").innerHTML=this.responseText;
-}
-}
-xmlhttp.open("GET","poll_vote.php?vote="+int,true);
-xmlhttp.send();
-}
-</script>
 
-<div id="poll">
-<h3>PC or Console?</h3>
-<form>
-PC:
-<input type="radio" name="vote" value="0" onclick="getVote(this.value)">
-<br>Console:
-<input type="radio" name="vote" value="1" onclick="getVote(this.value)">
-</form>
-</div>
+
+
+<B>PC or Console?</B><P>
+
+<INPUT TYPE="radio" NAME="pc" value="3">PC<BR>
+
+<INPUT TYPE="radio" NAME="console" value="4">Console<BR>
+
+
+<br>
+<br>
 
 <img src='https://www.thegamestation.online/wp-content/uploads/2017/02/Switch-Controller.png'>
 
-<span class = 'bold'> VS. </span>
+<span class = 'bold'>  &nbsp; &nbsp;    VS.  &nbsp; &nbsp;    </span>
 
 <img src='https://cdn0.iconfinder.com/data/icons/virtual-reality-6/100/14-512.png'>
 
-<script>
-function getVote(int) {
-if (window.XMLHttpRequest) {
-// code for IE7+, Firefox, Chrome, Opera, Safari
-xmlhttp=new XMLHttpRequest();
-} else {  // code for IE6, IE5
-xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-}
-xmlhttp.onreadystatechange=function() {
-if (this.readyState==4 && this.status==200) {
-  document.getElementById("poll").innerHTML=this.responseText;
-}
-}
-xmlhttp.open("GET","poll_vote.php?vote="+int,true);
-xmlhttp.send();
-}
-</script>
-</head>
-<body>
+<br>
+<br>
+
+
+
+<B>Nintendo Switch or Virtual Reality?</B><P>
+
+<INPUT TYPE="radio" NAME="switch" value="5">Nintendo Switch<BR>
+
+<INPUT TYPE="radio" NAME="vr" value="6">Virtual Reality<BR>
 
 <div id="poll">
-<h3>Nintendo Switch or Virtual Reality?</h3>
-<form>
-Nintendo Switch:
-<input type="radio" name="vote" value="0" onclick="getVote(this.value)">
-<br>Virtual Reality:
-<input type="radio" name="vote" value="1" onclick="getVote(this.value)">
-</form>
+
 </div>
 
+<br>
+
+<button> SUBMIT VOTES </button>
+
+  </FORM>
+
+<br>
 
 
 </html>
