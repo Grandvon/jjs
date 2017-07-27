@@ -122,7 +122,7 @@ class Tekken7Handler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = 'tekken')
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = 'tekken')
         if not one:
             x=0
         else:
@@ -137,7 +137,7 @@ class Tekken7Handler(webapp2.RequestHandler):
                                         'pic' : 'https://i.ytimg.com/vi/7NyPT_o5aOs/maxresdefault.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': 'tekken' }))
+                                        'game': 'tekken'}))
 
 
 
@@ -145,7 +145,7 @@ class DriftingHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = 'drifting-lands')
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = 'drifting-lands')
         if not one:
             x=0
         else:
@@ -166,7 +166,7 @@ class Dirt4Handler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = 'dirt-4')
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = 'dirt-4')
         if not one:
             x=0
         else:
@@ -188,7 +188,7 @@ class ESHandler(webapp2.RequestHandler):
         name_url = 'elder-scrolls'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -210,7 +210,7 @@ class UnderPressureHandler(webapp2.RequestHandler):
         name_url = 'under-pressure'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -233,7 +233,7 @@ class TownOfLightHandler(webapp2.RequestHandler):
         name_url = 'town-of-light'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -255,7 +255,7 @@ class WipeoutHandler(webapp2.RequestHandler):
         name_url = 'wipeout'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -277,7 +277,7 @@ class WonderBoyHandler(webapp2.RequestHandler):
         name_url = 'wonder-boy'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -299,7 +299,7 @@ class ArmsHandler(webapp2.RequestHandler):
         name_url = 'arms'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -322,7 +322,7 @@ class DeadByDayLightHandler(webapp2.RequestHandler):
         name_url = 'dead-by-daylight'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -345,7 +345,7 @@ class StormbloodHandler(webapp2.RequestHandler):
         name_url = 'stormblood'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -367,7 +367,7 @@ class NexMachinaHandler(webapp2.RequestHandler):
         name_url = 'nex-machina'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -389,7 +389,7 @@ class GetEvenHandler(webapp2.RequestHandler):
         name_url = 'get-even'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -411,7 +411,7 @@ class DanganronpaHandler(webapp2.RequestHandler):
         name_url = 'danganronpa'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -433,7 +433,7 @@ class EliteHandler(webapp2.RequestHandler):
         name_url = 'elite'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -455,7 +455,7 @@ class GolfClub2Handler(webapp2.RequestHandler):
         name_url = 'the-golf-club-2'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -477,7 +477,7 @@ class ValkyriaHandler(webapp2.RequestHandler):
         name_url = 'valkyria-revolution'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -500,7 +500,7 @@ class CBNSHandler(webapp2.RequestHandler):
         name_url = 'cbns-trilogy'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -522,7 +522,7 @@ class ThatsYouHandler(webapp2.RequestHandler):
         name_url = 'thats-you'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -544,7 +544,7 @@ class MetalSlugHandler(webapp2.RequestHandler):
         name_url = 'metal-slug-2'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -566,7 +566,7 @@ class WorldvsSwordHandler(webapp2.RequestHandler):
         name_url = 'accel-world-vs-sword-art'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -588,7 +588,7 @@ class FableFortuneHandler(webapp2.RequestHandler):
         name_url = 'fable-fortune'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -610,7 +610,7 @@ class ZodiacHandler(webapp2.RequestHandler):
         name_url = 'the-zodiac-age'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -632,7 +632,7 @@ class MinecraftHandler(webapp2.RequestHandler):
         name_url = 'minecraft'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -654,7 +654,7 @@ class YonderHandler(webapp2.RequestHandler):
         name_url = 'yonder'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -676,7 +676,7 @@ class MoonHuntersHandler(webapp2.RequestHandler):
         name_url = 'moon-hunters'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -698,7 +698,7 @@ class CODHandler(webapp2.RequestHandler):
         name_url = 'COD'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -720,7 +720,7 @@ class Splatton2Handler(webapp2.RequestHandler):
         name_url = 'splatton2'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -742,7 +742,7 @@ class AvenColonyHandler(webapp2.RequestHandler):
         name_url = 'aven-colony'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -764,7 +764,7 @@ class FateExtellaHandler(webapp2.RequestHandler):
         name_url = 'fate-extella'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -786,7 +786,7 @@ class FortniteHandler(webapp2.RequestHandler):
         name_url = 'fortnite'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'), stars=self.request.get('stars'),user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -808,7 +808,7 @@ class PyreHandler(webapp2.RequestHandler):
         name_url = 'pyre'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -830,7 +830,7 @@ class DanganronpaPCHandler(webapp2.RequestHandler):
         name_url = 'danganronpaPC'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -852,7 +852,7 @@ class TacomaHandler(webapp2.RequestHandler):
         name_url = 'tacoma'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -874,7 +874,7 @@ class HellbladeHandler(webapp2.RequestHandler):
         name_url = 'hellblade'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -896,7 +896,7 @@ class LawbreakersHandler(webapp2.RequestHandler):
         name_url = 'lawbreakers'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -918,7 +918,7 @@ class MegaManHandler(webapp2.RequestHandler):
         name_url = 'mega-man'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -940,7 +940,7 @@ class SonicManiaHandler(webapp2.RequestHandler):
         name_url = 'sonic-mania'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'), stars=self.request.get('stars'),user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -962,7 +962,7 @@ class UnchartedHandler(webapp2.RequestHandler):
         name_url = 'uncharted'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -984,7 +984,7 @@ class MaddenHandler(webapp2.RequestHandler):
         name_url = 'madden-nfl-18'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -1006,7 +1006,7 @@ class AbsolverHandler(webapp2.RequestHandler):
         name_url = 'absolver'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -1028,7 +1028,7 @@ class WarriorsHandler(webapp2.RequestHandler):
         name_url = 'warriors-all-stars'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -1050,7 +1050,7 @@ class GolfHandler(webapp2.RequestHandler):
         name_url = 'everybodys-golf'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -1072,7 +1072,7 @@ class MarioRabidsHandler(webapp2.RequestHandler):
         name_url = 'mario-rabids'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -1094,7 +1094,7 @@ class YakuzaKiwamiHandler(webapp2.RequestHandler):
         name_url = 'yakuza-kiwami'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
@@ -1116,7 +1116,7 @@ class LifeIsStrangeHandler(webapp2.RequestHandler):
         name_url = 'life-is-strange'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        one = GameData(review=self.request.get('review'), stars=self.request.get('stars'), user_name = cssi_user.first_name, game = name_url)
         if not one:
             x=0
         else:
