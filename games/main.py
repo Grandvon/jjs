@@ -100,8 +100,29 @@ class BattleHandler(webapp2.RequestHandler):
 
 class ResultsHandler(webapp2.RequestHandler):
   def get(self):
+      consoles = ['ps4', 'xbox', 'pc', 'console', 'switch', 'vr']
+      var_poll = {}
+      for console in consoles:
+
+          var_poll[console] = len(PollData.query(PollData.vote == console).fetch())
+
       main_template = env.get_template('pollresults.html')
-      self.response.out.write(main_template.render())
+      self.response.out.write(main_template.render(var_poll))
+
+  def post(self):
+      consoles = ['ps4', 'xbox', 'pc', 'console', 'switch', 'vr']
+      for console in consoles:
+          if self.request.get(console):
+              polldata = PollData(vote = console)
+              polldata.put()
+
+      self.get()
+
+
+
+
+class PollData(ndb.Model):
+    vote = ndb.StringProperty()
 
 class GameData(ndb.Model):
     stars = ndb.StringProperty()
