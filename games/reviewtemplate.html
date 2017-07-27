@@ -22,7 +22,6 @@
     <h1> {{ name }} </h1>
     <img src = {{ pic }} style="width:25%">
     <p> Synopsis: {{ synopsis }} </p>
-    <h2 class = stars> {{ stars }}/5 Stars </h2>
 
 
   <fieldset class="rating">
@@ -38,7 +37,7 @@
 
     <h3> Leave a review: </h3>
 
-    <form action = "/tekken" method = "get">
+    <form action = '/{{ game }}' method = "get">
       Enter a Review <input type = "text" name = "review">
       <input type = "submit" value = "Click"> to submit or press the enter key, then refresh your page once.
     </form>
@@ -48,8 +47,8 @@
           {% for para in review: %}
             {% if para.review %}
           <li>
-              {{ user }} says:
-              {{ para.review }} 
+              {{ para.user_name }} says:
+              {{ para.review }}
               <br><br>
           </li>
             {% endif %}

@@ -101,7 +101,8 @@ class BattleHandler(webapp2.RequestHandler):
 class GameData(ndb.Model):
     stars = ndb.StringProperty()
     review = ndb.StringProperty()
-
+    user_name = ndb.StringProperty()
+    game = ndb.StringProperty()
 
 
 class ProfileHandler(webapp2.RequestHandler):
@@ -122,11 +123,10 @@ class ProfileHandler(webapp2.RequestHandler):
 #The following handlers each follow the template for the gaming review page.
 class Tekken7Handler(webapp2.RequestHandler):
     def get(self):
-        game = GameData(stars = '4.75')
-        key = game.put()
+        user = users.get_current_user()
+        cssi_user = CssiUser.get_by_id(user.user_id())
 
-
-        one = GameData(review=self.request.get('review'))
+        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = 'tekken')
         if not one:
             x=0
         else:
@@ -135,98 +135,151 @@ class Tekken7Handler(webapp2.RequestHandler):
 
 
         query = GameData.query()
+        query = query.filter(ndb.GenericProperty('game') == 'tekken')
         query = query.order(GameData.review)
         results = query.fetch()
 
-        user = users.get_current_user()
-        cssi_user = CssiUser.get_by_id(user.user_id())
+
 
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Tekken 7',
                                         'pic' : 'https://i.ytimg.com/vi/7NyPT_o5aOs/maxresdefault.jpg',
-                                        'stars': key.get().stars,
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'user' : cssi_user.first_name + " " + cssi_user.last_name }))
+                                        'game': 'tekken' }))
 
 
 
 class DriftingHandler(webapp2.RequestHandler):
     def get(self):
-        game = GameData(stars = '3')
-        key = game.put()
-
-        one = GameData(review=self.request.get('review'))
+        user = users.get_current_user()
+        cssi_user = CssiUser.get_by_id(user.user_id())
+        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = 'drifting-lands')
         if not one:
             x=0
         else:
             if len(str(one.review)) > 0:
                 one.put()
-
-
         query = GameData.query()
+        query = query.filter(ndb.GenericProperty('game') == 'drifting-lands')
         query = query.order(GameData.review)
         results = query.fetch()
-
-        user = users.get_current_user()
-
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Drifting Lands',
                                         'pic' : 'https://steamdb.info/static/camo/apps/327240/header.jpg',
-                                        'stars': key.get().stars,
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'user' : first_name}))
+                                        'game': 'drifting-lands' }))
 
 class Dirt4Handler(webapp2.RequestHandler):
     def get(self):
-        game = GameData(stars = '')
-        key = game.put()
+        user = users.get_current_user()
+        cssi_user = CssiUser.get_by_id(user.user_id())
+        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = 'dirt-4')
+        if not one:
+            x=0
+        else:
+            if len(str(one.review)) > 0:
+                one.put()
+        query = GameData.query()
+        query = query.filter(ndb.GenericProperty('game') == 'dirt-4')
+        query = query.order(GameData.review)
+        results = query.fetch()
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Dirt 4',
                                         'pic' : 'http://blogcdn.codemasters.com/wp-content/uploads/2017/01/Fiesta_Aus_3.jpg',
-                                        'stars': key.get().stars,
-                                        'synopsis': "lorem ipsum..."}))
+                                        'synopsis': "lorem ipsum...",
+                                        'review': results,
+                                        'game': 'dirt-4' }))
 
 class ESHandler(webapp2.RequestHandler):
     def get(self):
-        game = GameData(stars = '')
-        key = game.put()
+        name_url = 'elder-scrolls'
+        user = users.get_current_user()
+        cssi_user = CssiUser.get_by_id(user.user_id())
+        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        if not one:
+            x=0
+        else:
+            if len(str(one.review)) > 0:
+                one.put()
+        query = GameData.query()
+        query = query.filter(ndb.GenericProperty('game') == name_url)
+        query = query.order(GameData.review)
+        results = query.fetch()
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'ESO: Morrowwind',
                                         'pic' : 'http://assets1.ignimgs.com/2017/01/31/esomorrowind-stills-naryu-1485890491125_1280w.jpg',
-                                        'stars': key.get().stars,
-                                        'synopsis': "lorem ipsum..."}))
+                                        'synopsis': "lorem ipsum...",
+                                        'review': results,
+                                        'game': name_url }))
 
 class UnderPressureHandler(webapp2.RequestHandler):
     def get(self):
-        game = GameData(stars = '')
-        key = game.put()
+        name_url = 'under-pressure'
+        user = users.get_current_user()
+        cssi_user = CssiUser.get_by_id(user.user_id())
+        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        if not one:
+            x=0
+        else:
+            if len(str(one.review)) > 0:
+                one.put()
+        query = GameData.query()
+        query = query.filter(ndb.GenericProperty('game') == name_url)
+        query = query.order(GameData.review)
+        results = query.fetch()
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'GOTG Eps 2:Under Pressure',
                                         'pic' : "https://dontfeedthegamers.com/wp-content/uploads/2017/05/telltale-guardians-episode-2.jpg",
-                                        'stars': key.get().stars,
-                                        'synopsis': "lorem ipsum..."}))
+                                        'synopsis': "lorem ipsum...",
+                                        'review': results,
+                                        'game': name_url }))
+
 
 class TownOfLightHandler(webapp2.RequestHandler):
     def get(self):
-        game = GameData(stars = '')
-        key = game.put()
+        name_url = 'town-of-light'
+        user = users.get_current_user()
+        cssi_user = CssiUser.get_by_id(user.user_id())
+        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        if not one:
+            x=0
+        else:
+            if len(str(one.review)) > 0:
+                one.put()
+        query = GameData.query()
+        query = query.filter(ndb.GenericProperty('game') == name_url)
+        query = query.order(GameData.review)
+        results = query.fetch()
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'The Town of Light',
                                         'pic' : 'https://i.ytimg.com/vi/RAI3B0K9HiU/maxresdefault.jpg',
-                                        'stars': key.get().stars,
-                                        'synopsis': "lorem ipsum..."}))
+                                        'synopsis': "lorem ipsum...",
+                                        'review': results,
+                                        'game': name_url }))
 
 class WipeoutHandler(webapp2.RequestHandler):
     def get(self):
-        game = GameData(stars = '')
-        key = game.put()
+        name_url = 'wipeout'
+        user = users.get_current_user()
+        cssi_user = CssiUser.get_by_id(user.user_id())
+        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = name_url)
+        if not one:
+            x=0
+        else:
+            if len(str(one.review)) > 0:
+                one.put()
+        query = GameData.query()
+        query = query.filter(ndb.GenericProperty('game') == name_url)
+        query = query.order(GameData.review)
+        results = query.fetch()
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Wipeout Omega Collection',
                                         'pic' : 'https://media.playstation.com/is/image/SCEA/wipeout-omega-collection-screen-08-us-03dec16?$MediaCarousel_Original$',
-                                        'stars': key.get().stars,
-                                        'synopsis': "lorem ipsum..."}))
+                                        'synopsis': "lorem ipsum...",
+                                        'review': results,
+                                        'game': name_url }))
 
 class WonderBoyHandler(webapp2.RequestHandler):
     def get(self):
