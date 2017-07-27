@@ -98,6 +98,11 @@ class BattleHandler(webapp2.RequestHandler):
       main_template = env.get_template('battle.html')
       self.response.out.write(main_template.render())
 
+class ResultsHandler(webapp2.RequestHandler):
+  def get(self):
+      main_template = env.get_template('pollresults.html')
+      self.response.out.write(main_template.render())
+
 class GameData(ndb.Model):
     stars = ndb.StringProperty()
     review = ndb.StringProperty()
@@ -617,6 +622,7 @@ app = webapp2.WSGIApplication([
   ('/history-of-gaming', HistoryHandler),
   ('/console-battle-arena', BattleHandler),
   ('/profile', ProfileHandler),
+  ('/pollresults', ResultsHandler),
     #game handlers
   ('/tekken', Tekken7Handler),
   ('/drifting-lands', DriftingHandler),
