@@ -123,21 +123,37 @@ class Tekken7Handler(webapp2.RequestHandler):
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
         one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = 'tekken')
+        alert = ''
         if not one:
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == 'tekken')
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Tekken 7',
                                         'pic' : 'https://i.ytimg.com/vi/7NyPT_o5aOs/maxresdefault.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': 'tekken'}))
+                                        'game': 'tekken',
+                                        'rating': rating,
+                                        'alert': alert}))
 
 
 
@@ -146,24 +162,41 @@ class DriftingHandler(webapp2.RequestHandler):
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
         one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = 'drifting-lands')
+        alert = ''
         if not one:
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == 'drifting-lands')
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Drifting Lands',
                                         'pic' : 'https://steamdb.info/static/camo/apps/327240/header.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': 'drifting-lands' }))
+                                        'game': 'drifting-lands',
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class Dirt4Handler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
         one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = 'dirt-4')
@@ -171,20 +204,36 @@ class Dirt4Handler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == 'dirt-4')
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Dirt 4',
                                         'pic' : 'http://blogcdn.codemasters.com/wp-content/uploads/2017/01/Fiesta_Aus_3.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': 'dirt-4' }))
+                                        'game': 'dirt-4',
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class ESHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'elder-scrolls'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -193,20 +242,36 @@ class ESHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'ESO: Morrowwind',
                                         'pic' : 'http://assets1.ignimgs.com/2017/01/31/esomorrowind-stills-naryu-1485890491125_1280w.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+
+                                        'alert': alert }))
 
 class UnderPressureHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'under-pressure'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -215,21 +280,37 @@ class UnderPressureHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'GOTG Eps 2:Under Pressure',
                                         'pic' : "https://dontfeedthegamers.com/wp-content/uploads/2017/05/telltale-guardians-episode-2.jpg",
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 
 class TownOfLightHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'town-of-light'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -238,20 +319,36 @@ class TownOfLightHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'The Town of Light',
                                         'pic' : 'https://i.ytimg.com/vi/RAI3B0K9HiU/maxresdefault.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class WipeoutHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'wipeout'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -260,20 +357,36 @@ class WipeoutHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Wipeout Omega Collection',
                                         'pic' : 'https://media.playstation.com/is/image/SCEA/wipeout-omega-collection-screen-08-us-03dec16?$MediaCarousel_Original$',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class WonderBoyHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'wonder-boy'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -282,20 +395,36 @@ class WonderBoyHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Wonder Boy',
                                         'pic' : 'https://i.ytimg.com/vi/ibKf66tVoFw/maxresdefault.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class ArmsHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'arms'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -304,21 +433,37 @@ class ArmsHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Arms',
                                         'pic' : 'http://content.newsinc.com/jpg/838/32428466/56430218.jpg?t=1495116180',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 
 class DeadByDayLightHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'dead-by-daylight'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -327,21 +472,37 @@ class DeadByDayLightHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Dead by Daylight',
                                         'pic' : 'https://images4.alphacoders.com/721/721397.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 
 class StormbloodHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'stormblood'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -350,20 +511,36 @@ class StormbloodHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Stormblood',
                                         'pic' : 'http://cdn.mos.cms.futurecdn.net/F8MCdkAPcjJSSyoTPnGoV.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class NexMachinaHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'nex-machina'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -372,20 +549,36 @@ class NexMachinaHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Nex Machina',
                                         'pic' : 'https://media.playstation.com/is/image/SCEA/nex-machina-screen-03-ps4-us-03dec16?$MediaCarousel_Original$',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class GetEvenHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'get-even'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -394,20 +587,36 @@ class GetEvenHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Get Even',
                                         'pic' : 'http://cdn.mos.cms.futurecdn.net/JZsnFaFsJjFDBhQa9MbuDc.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class DanganronpaHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'danganronpa'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -416,20 +625,36 @@ class DanganronpaHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Danganronpa: Ultra Despair Girls',
                                         'pic' : 'https://cdn.destructoid.com//ul/307925-2811075-trailer_danganronpaultra_despairgirls_20150220.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class EliteHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'elite'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -438,20 +663,36 @@ class EliteHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Elite: Dangerous',
                                         'pic' : 'https://static.gamespot.com/uploads/original/1197/11970954/2823045-starport_anaconda.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class GolfClub2Handler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'the-golf-club-2'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -460,20 +701,36 @@ class GolfClub2Handler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'The Golf Club 2',
                                         'pic' : 'https://i.ytimg.com/vi/GpyT0XC4bv0/maxresdefault.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url ,
+                                        'rating': rating,
+                                        'alert': alert}))
 
 class ValkyriaHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'valkyria-revolution'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -482,21 +739,37 @@ class ValkyriaHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Valkyria Revolution',
                                         'pic' : 'https://cdn.vox-cdn.com/thumbor/yuU5RA7yAATMWZ2vd8h8jU6m6Eo=/0x0:1600x900/1200x800/filters:focal(672x322:928x578)/cdn.vox-cdn.com/uploads/chorus_image/image/50889561/valkyria_azure_revolution.0.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 
 class CBNSHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'cbns-trilogy'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -505,20 +778,36 @@ class CBNSHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Crash Bandicoot N. Sane Trilogy',
                                         'pic' : 'https://media.playstation.com/is/image/SCEA/crash-bandicoot-n-sane-trilogy-screen-04-us-03dec16?$MediaCarousel_Original$',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class ThatsYouHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'thats-you'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -527,20 +816,36 @@ class ThatsYouHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "That's You!",
                                         'pic' : 'https://static.gamespot.com/uploads/screen_kubrick/1570/15709614/3256358-site_gameplay_thatsyou_20170703.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class MetalSlugHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'metal-slug-2'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -549,20 +854,36 @@ class MetalSlugHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Metal Slug 2 (re-release)",
                                         'pic' : 'http://cdn-static.denofgeek.com/sites/denofgeek/files/styles/article_width/public/2017/03/metal-slug-3.jpg?itok=TEoyTJ2s',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class WorldvsSwordHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'accel-world-vs-sword-art'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -571,20 +892,36 @@ class WorldvsSwordHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Accel World VS. Sword Art Online",
                                         'pic' : 'http://www.psu.com/media/articles/image/accelworld1.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class FableFortuneHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'fable-fortune'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -593,20 +930,36 @@ class FableFortuneHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Fable Fortune",
                                         'pic' : 'https://i.ytimg.com/vi/Lnw499IdZQM/maxresdefault.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class ZodiacHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'the-zodiac-age'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -615,20 +968,36 @@ class ZodiacHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "FF XII: The Zodiac Age",
                                         'pic' : 'http://www.finalfantasyxii.com/img/home/final-fantasy-xii-character-group-shot.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class MinecraftHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'minecraft'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -637,20 +1006,36 @@ class MinecraftHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Minecraft: Story Mode Season 2",
                                         'pic' : 'https://cdn2.vox-cdn.com/uploads/chorus_asset/file/8645163/MC201_SeaTempleExterior_1920x1080.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class YonderHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'yonder'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -659,20 +1044,36 @@ class YonderHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Yonder: The Cloud Catcher Chronicles",
                                         'pic' : 'https://static1.squarespace.com/static/581d5d8220099e9ace514235/590dac0ecd0f684a2947bda3/590dac162e69cf3d4b372644/1494738229692/Bambex.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class MoonHuntersHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'moon-hunters'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -681,20 +1082,36 @@ class MoonHuntersHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Moon Hunters",
                                         'pic' : 'https://cdn.cultofmac.com/wp-content/uploads/2014/09/Moon-Hunters.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class CODHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'COD'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -703,20 +1120,36 @@ class CODHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "COD: Mondern Warfare Remastered",
                                         'pic' : 'https://charlieintel.com/wp-content/uploads/2017/06/mwrimage.jpeg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class Splatton2Handler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'splatton2'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -725,20 +1158,36 @@ class Splatton2Handler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Splatton 2",
                                         'pic' : 'http://ll-c.ooyala.com/e1/trdG92YjE6CHZOtl9h_Y5M-87LyNMK46/promo324080340',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class AvenColonyHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'aven-colony'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -747,20 +1196,36 @@ class AvenColonyHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Aven Colony",
                                         'pic' : 'http://avencolony.com/wp-content/uploads/2016/08/promo1600x900.png?x16986',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class FateExtellaHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'fate-extella'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -769,20 +1234,36 @@ class FateExtellaHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Fate/Extella:The Umbral Star",
                                         'pic' : 'https://www.gamecrate.com/sites/default/files/Fate%20Extella%20The%20Umbral%20Star%20-%201.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class FortniteHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'fortnite'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -791,20 +1272,36 @@ class FortniteHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Fortnite",
                                         'pic' : 'https://static1.gamespot.com/uploads/original/1406/14063904/2880204-laststand_final_1080p+copy.png',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class PyreHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'pyre'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -813,20 +1310,36 @@ class PyreHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Pyre",
                                         'pic' : 'https://cdn.vox-cdn.com/uploads/chorus_asset/file/8903015/Pyre_May_2017_01.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class DanganronpaPCHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'danganronpaPC'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -835,20 +1348,36 @@ class DanganronpaPCHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Danganronpa: Ultra Despair Girls (PC)",
                                         'pic' : 'https://cdn.destructoid.com//ul/307925-2811075-trailer_danganronpaultra_despairgirls_20150220.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class TacomaHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'tacoma'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -857,20 +1386,36 @@ class TacomaHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Tacoma",
                                         'pic' : 'http://gameranx.com/wp-content/uploads/2016/03/tacoma-1.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class HellbladeHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'hellblade'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -879,20 +1424,36 @@ class HellbladeHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Hellblade:Senua's Sacrifice",
                                         'pic' : 'https://i.ytimg.com/vi/WOSDW_wxH3Y/maxresdefault.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class LawbreakersHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'lawbreakers'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -901,20 +1462,36 @@ class LawbreakersHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Lawbreakers",
                                         'pic' : 'https://static.gamespot.com/uploads/original/536/5360430/3106269-lawbreakers_vangaurd_vs_titan.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class MegaManHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'mega-man'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -923,20 +1500,36 @@ class MegaManHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Mega Man Legacy Collection 2",
                                         'pic' : 'https://c.slashgear.com/wp-content/uploads/2017/04/mega-man-legacy-collection-980x420.png',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class SonicManiaHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'sonic-mania'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -945,20 +1538,36 @@ class SonicManiaHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Sonic Mania",
                                         'pic' : 'https://i.ytimg.com/vi/OiL3fqk5yRo/maxresdefault.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class UnchartedHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'uncharted'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -967,20 +1576,36 @@ class UnchartedHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Uncharted: The Lost Legacy",
                                         'pic' : 'https://apollo2.dl.playstation.net/cdn/UP9000/CUSA07737_00/FREE_CONTENT0SZAeSQd9jFnHHvJmvDm/PREVIEW_SCREENSHOT2_146393.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class MaddenHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'madden-nfl-18'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -989,20 +1614,36 @@ class MaddenHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Madden NFL 18",
                                         'pic' : 'http://www.sportsgamersonline.com/wp-content/uploads/2017/02/tom-brady-madden-25-13-1200x630-c.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class AbsolverHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'absolver'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -1011,20 +1652,36 @@ class AbsolverHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Absolver",
                                         'pic' : 'https://static.gamespot.com/uploads/original/536/5360430/3068853-absolver+-+screen+4.png',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class WarriorsHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'warriors-all-stars'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -1033,20 +1690,36 @@ class WarriorsHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Warriors All-Stars",
                                         'pic' : 'https://cdn1.vox-cdn.com/uploads/chorus_asset/file/8323817/WarriorsAllStars_Screenshot06.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class GolfHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'everybodys-golf'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -1055,20 +1728,36 @@ class GolfHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Everybody's Golf",
                                         'pic' : 'https://c1.staticflickr.com/3/2845/33305050694_de7e749473_b.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class MarioRabidsHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'mario-rabids'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -1077,20 +1766,36 @@ class MarioRabidsHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Mario + Rabbids: Kingdom Battle",
                                         'pic' : 'http://gematsu.com/wp-content/uploads/2017/06/Mario-Rabbids-Kingdom-Battle-Announced-Init.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class YakuzaKiwamiHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'yakuza-kiwami'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -1099,20 +1804,36 @@ class YakuzaKiwamiHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Yakuza Kiwami",
                                         'pic' : 'https://www.bleedingcool.com/wp-content/uploads/2017/04/Yakuza-Kiwami.png',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 class LifeIsStrangeHandler(webapp2.RequestHandler):
     def get(self):
+        alert = ''
         name_url = 'life-is-strange'
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
@@ -1121,17 +1842,33 @@ class LifeIsStrangeHandler(webapp2.RequestHandler):
             x=0
         else:
             if len(str(one.review)) > 0:
-                one.put()
+                if int(one.stars) >5:
+                    alert = ("Please give this game a rating between one and five.")
+                elif int(one.stars) <1:
+                    alert = ("Please give this game a rating between one and five.")
+                else:
+                    one.put()
         query = GameData.query()
         query = query.filter(ndb.GenericProperty('game') == name_url)
         query = query.order(GameData.review)
         results = query.fetch()
+        rating = 0;
+        count = 0;
+
+        for para in results:
+            rating += float(para.stars)
+            count= count +1
+        if count > 0:
+            rating = rating / count
+        rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Life is Strange: Before the Storm",
                                         'pic' : 'https://cdn.vox-cdn.com/uploads/chorus_asset/file/8696367/e327ba76bf878c05dd80de3ff0361f35_1920_KR.jpg',
                                         'synopsis': "lorem ipsum...",
                                         'review': results,
-                                        'game': name_url }))
+                                        'game': name_url,
+                                        'rating': rating,
+                                        'alert': alert }))
 
 
 
