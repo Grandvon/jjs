@@ -127,7 +127,7 @@ class Tekken7Handler(webapp2.RequestHandler):
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
 
-        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = 'tekken')
+        one = GameData(review=self.request.get('review'), user_name = cssi_user.first_name, game = 'tekken', stars=self.request.get('stars'))
         if not one:
             x=0
         else:
@@ -140,12 +140,19 @@ class Tekken7Handler(webapp2.RequestHandler):
         query = query.order(GameData.review)
         results = query.fetch()
 
+        query = GameData.query()
+        query = query.filter(ndb.GenericProperty('game') == 'tekken')
+        query = query.order(GameData.review)
+        stars = query.fetch()
+
+
 
 
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Tekken 7',
                                         'pic' : 'https://i.ytimg.com/vi/7NyPT_o5aOs/maxresdefault.jpg',
                                         'synopsis': "lorem ipsum...",
+                                        'stars' : stars,
                                         'review': results,
                                         'game': 'tekken' }))
 
