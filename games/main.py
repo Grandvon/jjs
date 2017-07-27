@@ -135,7 +135,7 @@ class Tekken7Handler(webapp2.RequestHandler):
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Tekken 7',
                                         'pic' : 'https://i.ytimg.com/vi/7NyPT_o5aOs/maxresdefault.jpg',
-                                        'synopsis': "lorem ipsum...",
+                                        'synopsis': "After the events of Tekken 6, the war between the Mishima Zaibatsu and G Corporation still continues along with the disappearance of Jin Kazama. Meanwhile, a investigative journalist who lost his wife and son during the war that Jin started (and whom also narrates throughout part of the game) begins narrating about the Mishima Zaibatsu and G Corporation.",
                                         'review': results,
                                         'game': 'tekken' }))
 
