@@ -24,7 +24,7 @@
     <p> Synopsis: {{ synopsis }} </p>
 
 
-  <fieldset class="rating">
+  <!--<fieldset class="rating">
     <legend>Please rate:</legend>
   <form action="/{{ game }}" method="get">
     <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
@@ -34,15 +34,16 @@
     <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label><br>
     <input type="submit" value="Submit">
   </form>
-</fieldset>
+</fieldset>-->
 
 
 
     <h3> Leave a review: </h3>
 
     <form action = '/{{ game }}' method = "get">
+      Give this game a number rating between one and five: <input id = star type = "text" name = "stars"><br>
       Enter a Review <input type = "text" name = "review">
-      <input type = "submit" value = "Click"> to submit or press the enter key, then refresh your page once.
+      <input id = click type = "submit" value = "Click"> twice to submit.
     </form>
 
     <h2>Reviews:</h2>
@@ -50,7 +51,7 @@
           {% for para in review: %}
             {% if para.review %}
           <li>
-              {{ para.user_name }} gives this game 5 Stars and says:<br>
+              {{ para.user_name }} gives this game {{ para.stars }} Stars and says:<br>
               {{ para.review }}
               <br><br>
           </li>

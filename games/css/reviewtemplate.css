@@ -2,10 +2,7 @@
   text-decoration:none;
 }
 
-/*input{
-  width: 80%;
-  height: 80px;
-}*/
+
 CSS
 HTML
 .rating {
@@ -75,4 +72,25 @@ li{
   margin-left: 20px;
   margin-right: 60px;
   margin-bottom: 10px;
+}
+
+#star{
+  width: 22px;
+}
+
+h3{
+  font-size: 50px;
+}
+
+form{
+  font-size: 35px;
+}
+
+input{
+  width: 40%;
+  height: 20px;
+}
+
+#click{
+  width: inherit;
 }
