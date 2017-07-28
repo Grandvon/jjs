@@ -16,11 +16,17 @@
     <a href="/" > Sign In/Out </a>
     ...
     </div>
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+    <img class="w3-image" src="{{ pic }}" alt="Architecture" width="1500" height="800">
+    <div class="w3-display-middle w3-margin-top w3-center">
+      <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>{{ name }}</b></span></h1>
+    </div>
+  </header>
 
 
-    <h1> {{ name }} </h1>
-    <img src = {{ pic }} style="width:25%">
-    <p> The average rating of this game is {{ rating }} / 5 stars<br>Synopsis: {{ synopsis }} </p>
+    <p class="w3-text-center"><b>The average rating of this game is: <p class="w3-text-gold">{{ rating }} / 5 stars</p></b><br><br></p>
+      <p class="w3-text-left w3-text-white">Synopsis: {{ synopsis }} </p>
+
 
 
   <!--<fieldset class="rating">
