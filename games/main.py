@@ -2,7 +2,7 @@ import webapp2
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
-
+import datetime
 
 import jinja2
 
@@ -125,6 +125,7 @@ class GameData(ndb.Model):
     review = ndb.StringProperty()
     user_name = ndb.StringProperty()
     game = ndb.StringProperty()
+    date = ndb.DateProperty()
 
 
 class ProfileHandler(webapp2.RequestHandler):
@@ -145,6 +146,7 @@ class ProfileHandler(webapp2.RequestHandler):
 #The following handlers each follow the template for the gaming review page.
 class Tekken7Handler(webapp2.RequestHandler):
     def get(self):
+        #today = datetime.date.today()
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
         one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name + " " + cssi_user.last_name, game = 'tekken')
