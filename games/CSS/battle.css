@@ -4,13 +4,13 @@ body {
  background-repeat: no-repeat;
  background-position: 100%;
  background-attachment: fixed;
- font-family: 'Alegreya Sans SC', sans-serif;
 }
 
 div.scrollmenu {
     background-color: #333;
     overflow: auto;
     white-space: nowrap;
+    font: inherit;
 }
 
 div.scrollmenu a {
@@ -38,6 +38,8 @@ img {
 
 h1 {
   font-size: 45px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+
 }
 
 img {
@@ -47,10 +49,14 @@ img {
 
 h3 {
   font-size: 30px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+
 }
 
 form {
   font-size: 25px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+
 }
 
 button {

@@ -151,7 +151,7 @@ class Tekken7Handler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         cssi_user = CssiUser.get_by_id(user.user_id())
-        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name, game = 'tekken')
+        one = GameData(review=self.request.get('review'),stars=self.request.get('stars'), user_name = cssi_user.first_name + " " + cssi_user.last_name, game = 'tekken')
         alert = ''
         if not one:
             x=0
