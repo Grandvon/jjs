@@ -1,0 +1,53 @@
+body {
+ text-align: center;
+ background-image: url("http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/Purple-wallpaper-8.jpg");
+ background-repeat: no-repeat;
+ background-position: 100%;
+ background-attachment: fixed;
+}
+
+p {
+  font-size: 30pt;
+}
+
+
+h1 {
+  font-size: 45pt;
+}
+
+
+
+h2 {
+  font-size: 35pt;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div.scrollmenu {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    background-color: #777;
