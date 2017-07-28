@@ -1854,7 +1854,7 @@ class YakuzaKiwamiHandler(webapp2.RequestHandler):
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': "Yakuza Kiwami",
                                         'pic' : 'https://www.bleedingcool.com/wp-content/uploads/2017/04/Yakuza-Kiwami.png',
-                                        'synopsis': "t was developed by Sega for the PlayStation 3 and PlayStation 4",
+                                        'synopsis': "It was developed by Sega for the PlayStation 3 and PlayStation 4",
                                         'review': results,
                                         'game': name_url,
                                         'rating': rating,
