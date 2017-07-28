@@ -23,3 +23,10 @@ body {
  background-position: 100%;
  background-attachment: fixed;
 }
+
+p {
+  background: linear-gradient(#e0ccff, #ff99ff);
+  padding: 34px;
+  display: inline-block;
+  position:relative;
+}
