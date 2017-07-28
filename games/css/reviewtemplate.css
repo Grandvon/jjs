@@ -1,4 +1,153 @@
-.stars{
+.w3-center{
+  text-align:center
+}
+.w3-wide{
+  letter-spacing:4px
+}
+
+.w3-image{
+  max-width:100%;height:500px
+}
+.w3-margin-top{
+  margin-top:16px
+}
+.w3-display-middle{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%)
+}
+
+.w3-content{
+  max-width:980px;margin:auto
+}
+
+.w3-display-container{
+  position:relative
+
+}
+
+.w3-button{
+  border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:grey;text-align:center;cursor:pointer;white-space:nowrap
+}
+
+.w3-display-left{
+  position:absolute;top:50%;left:0%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)
+}
+
+.w3-display-right{
+  position:absolute;top:50%;right:0%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)
+}
+
+.w3-black {
+  color: white;
+  background-color: black;
+}
+
+.w3-display-topleft{
+  position:absolute;left:0;top:0;
+}
+
+.w3-padding{
+  padding:8px 16px;
+}
+
+.w3-col{
+  padding:0 8px;
+}
+
+.w3-margin-bottom{
+  margin-bottom:16px;
+}
+
+.l3{
+  width:24.99999%;
+}
+
+.w3-row-padding {
+  padding: 0 8px;
+}
+
+}
+
+.w3-border-bottom{
+  border-bottom:1px solid #ccc
+}
+
+.w3-padding-16{
+  padding-top:16px;
+  padding-bottom:16px;
+}
+
+
+}
+
+div {
+  display:block;
+}
+
+*,*:before,*:after{
+  box-sizing:inherit
+}
+
+.w3-row-padding,.w3-row-padding>.w3-half,.w3-row-padding>.w3-third,.w3-row-padding>.w3-twothird,.w3-row-padding>.w3-threequarter,.w3-row-padding>.w3-quarter,.w3-row-padding>.w3-col{
+  padding:0 8px;
+  display:flex;
+}
+
+.w3-half{
+  width:49.99999%;
+}
+
+.w3-third{
+  width:33.33333%;
+}
+
+.w3-twothird{
+  width:66.66666%;
+}
+
+.w3-threequarter{
+  width:74.99999%
+}
+
+.w3-container:after,.w3-container:before,.w3-panel:after,.w3-panel:before,.w3-row:after,.w3-row:before,.w3-row-padding:after,.w3-row-padding:before,
+.w3-cell-row:before,.w3-cell-row:after,.w3-clear:after,.w3-clear:before,.w3-bar:before,.w3-bar:after{content:"";display:table;clear:both;}
+
+.w3-text-left{
+  text-align: left
+}
+
+.w3-text-center{
+  text align: center
+}
+
+.w3-white-background{
+  background-color: white;
+}
+
+.w3-white{
+  text-decoration-color:white;
+}
+
+.w3-text-white,.w3-hover-text-white:hover{
+  color:#fff
+}
+
+.w3-text-gold{
+  color:gold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.stars{
   text-decoration:none;
 }
 
@@ -11,7 +160,7 @@ HTML
 
 /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
    follow these rules. Every browser that supports :checked also supports :not(), so
-   it doesn’t make the test unnecessarily selective */
+   it doesn’t make the test unnecessarily selective
 .rating:not(:checked) > input {
     position:absolute;
     top:-9999px;
@@ -59,7 +208,7 @@ HTML
     position:relative;
     top:2px;
     left:2px;
-}
+}*/
 
 ul{
   list-style-type: none;

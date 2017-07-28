@@ -216,7 +216,7 @@ class DriftingHandler(webapp2.RequestHandler):
         rating = round(rating, 2)
         main_template = env.get_template('reviewtemplate.html')
         self.response.out.write(main_template.render({'name': 'Drifting Lands',
-                                        'pic' : 'https://steamdb.info/static/camo/apps/327240/header.jpg',
+                                        'pic' : 'https://i.ytimg.com/vi/sAKigVZPHCQ/maxresdefault.jpg',
                                         'synopsis': "Drifting Lands takes place in the skies of a shattered planet. Centuries ago a huge cataclysm fragmented and froze this world in a state of partial disintegration. Powerful and mysterious gravitational anomalies keep the huge chunks of rock from drifting away in space or collapsing into a single body. <br><br>The last floating continents fit for human civilization are controlled by big private corporations acting as totalitarian states. These so called nations compete fiercely to survive and exploit every available natural resources.",
                                         'review': results,
                                         'game': 'drifting-lands',
