@@ -78,10 +78,6 @@ class MainHandler(webapp2.RequestHandler):
 
 
 
-class GameHandler(webapp2.RequestHandler):
-  def get(self):
-    main_template = env.get_template('mainpage.html')
-    self.response.out.write(main_template.render())
 
 class ReviewHandler(webapp2.RequestHandler):
   def get(self):
@@ -1904,7 +1900,6 @@ class LifeIsStrangeHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
   ('/', MainHandler),
-  ('/homepage', GameHandler),
   ('/gaming-reviews', ReviewHandler),
   ('/history-of-gaming', HistoryHandler),
   ('/console-battle-arena', BattleHandler),
